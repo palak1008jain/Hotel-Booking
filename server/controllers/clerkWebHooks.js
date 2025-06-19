@@ -13,19 +13,22 @@ const clerkWebhooks = async (req,res) => {
             "svix-signature": req.headers["svix-signature"],
             
         };
+       
+
 
         //verifying headers
         await whook.verify(JSON.stringify(req.body), headers)
 
         //Getting Data from request body
         const {data , type}  = req.body
-
+   
         const userData = {
             _id: data.id,
             email: data.email_addresses[0].email_address,
             username: data.first_name + " " + data.last_name,
             image: data.image_url,
         }
+      
          
         //Switch Cases for different Events
         switch (type) {
@@ -52,6 +55,7 @@ const clerkWebhooks = async (req,res) => {
         res.json({success:false, message: error.message});
         
     }
+
 }
 
 export default clerkWebhooks;
