@@ -13,10 +13,11 @@ app.use(cors()) //enable cross-origin resource sharing
 
 //middleware
 app.use(express.json())
-app.use(clerkMiddleware())
-
 //API to listen to Clerk Webhooks
 app.use("/api/clerk", clerkWebhooks)
+app.use(clerkMiddleware())
+
+
 
 app.get('/',(req,res)=>res.send("API is working"))
 
