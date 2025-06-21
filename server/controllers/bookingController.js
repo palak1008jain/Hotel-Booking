@@ -72,7 +72,7 @@ export const createBooking = async (req,res)=>{
         })
 
         const mailOptions={
-            from: process.env.SENDER_EMAIL,
+            from: process.env.SENDER_MAIL,
             to: req.user.email,
             subject:'Hotel Booking Details',
             html:
